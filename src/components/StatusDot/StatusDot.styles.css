@@ -1,0 +1,38 @@
+.dot-container {
+  display: flex;
+  flex-direction: row;
+	align-items: center;
+	margin-right: 16px;
+	margin-bottom: 24px;
+	min-width: 160px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+	border-radius: 5px;
+}
+
+.red {
+  background: #ff2626;
+}
+
+.orange {
+  background: #ff7f37;
+}
+
+.green {
+  background: #3e9814;
+}
+
+.dot-text {
+  font-size: 16px;
+  color: white;
+  margin-bottom: 0;
+  margin-left: 12px;
+}
+
+.dot-text:hover {
+	text-decoration: underline;
+	cursor: pointer;
+}
