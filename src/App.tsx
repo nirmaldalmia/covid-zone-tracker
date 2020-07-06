@@ -84,10 +84,21 @@ export default class App extends React.Component<IProps, IState> {
             </Col>
           </Row>
           <Row>
-						<Col md={8} sm={24} className="zone-info-container">
-
-						</Col>
-					</Row>
+            <Col lg={6} md={12} sm={24} className="zone-info-container">
+              <Row>
+                <StatusDot color="red" text="Red zone" textStyle={{ fontWeight: 500 }} />
+								<p className="sub-text" style={{ fontSize: "14px" }}>Most active cases</p>
+              </Row>
+							<Row>
+                <StatusDot color="orange" text="Orange zone" textStyle={{ fontWeight: 500 }} />
+								<p className="sub-text" style={{ fontSize: "14px" }}>Less active cases</p>
+              </Row>
+							<Row>
+                <StatusDot color="green" text="Green zone" textStyle={{ fontWeight: 500 }} />
+								<p className="sub-text" style={{ fontSize: "14px" }}>Very few active cases</p>
+              </Row>
+            </Col>
+          </Row>
         </div>
       </div>
     );

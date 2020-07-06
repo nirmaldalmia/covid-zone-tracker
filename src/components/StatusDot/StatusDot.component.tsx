@@ -11,9 +11,9 @@ type Props = {
 
 const StatusDot = (props: Props) => {
   return (
-    <div className="dot-container">
-      <div className={"dot " + props.color}></div>
-      <p className="dot-text">{props.text}</p>
+    <div className="dot-container" style={props.containerStyle}>
+      <div className={"dot " + props.color} style={props.dotStyle}></div>
+      <p className="dot-text" style={props.textStyle}>{props.text}</p>
     </div>
   );
 };
