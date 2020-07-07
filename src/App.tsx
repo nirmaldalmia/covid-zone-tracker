@@ -62,7 +62,7 @@ export default class App extends React.Component<IProps, IState> {
       <div className="App">
         <div className="container">
           <Row>
-            <Col md={12} sm={24} className="content">
+            <Col lg={12} md={18} sm={24} className="content">
               <div>
                 <Title className="heading">Covid Zone Tracker</Title>
                 <p className="sub-text subtitle">
@@ -130,7 +130,7 @@ export default class App extends React.Component<IProps, IState> {
             )}
           </Row>
           <Row>
-            <Col lg={8} md={12} sm={24} className="zone-info-container">
+            <Col lg={8} md={16} sm={24} className="zone-info-container">
               <Row>
                 <StatusDot
                   color="red"

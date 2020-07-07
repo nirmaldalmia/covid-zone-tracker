@@ -14,7 +14,7 @@ const PopularCitiesList = (props: Props) => (
     <Divider style={{ border: "1px solid rgba(255, 255, 255, 0.12)" }} />
     <Row>
       {PopularCities.map((item) => (
-        <Col md={6} sm={12} key={item.name}>
+        <Col lg={6} md={8} sm={12} key={item.name}>
           <div className="popular-item" onClick={() => props.handleClick(item.district)}>
             <StatusDot color={item.zone} text={item.name} />
           </div>
