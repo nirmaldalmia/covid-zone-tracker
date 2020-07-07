@@ -1,0 +1,28 @@
+.details-container {
+	align-items: center;
+	margin-bottom: 24px;
+}
+
+.label {
+  font-weight: 300;
+  font-size: 18px;
+	color: rgba(255, 255, 255, 0.7);
+	margin-bottom: 0;
+	margin-right: 24px;
+}
+
+.state {
+	font-weight: 300;
+	font-size: 18px;
+	margin-bottom: 0;
+}
+
+.know-more {
+	text-transform: uppercase;
+	font-size: 16px;
+	letter-spacing: 0.07em;
+}
+
+.arrow-icon {
+	transform: rotateY(0deg) rotate(45deg);
+}

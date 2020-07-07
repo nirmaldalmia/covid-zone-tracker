@@ -1,35 +1,43 @@
 const PopularCities = [
 	{
 		name: "Mumbai",
-		zone: "red"
+		zone: "red",
+		district: "Mumbai",
 	},
 	{
 		name: "Delhi",
-		zone: "red"
+		zone: "red",
+		district: "New Delhi",
 	},
 	{
 		name: "Hyderabad",
-		zone: "red"
+		zone: "red",
+		district: "Hyderabad",
 	},
 	{
 		name: "Bengaluru",
-		zone: "red"
+		zone: "red",
+		district: "Bengaluru Urban"
 	},
 	{
 		name: "Kolkata",
-		zone: "red"
+		zone: "red",
+		district: "Kolkata"
 	},
 	{
 		name: "Pune",
-		zone: "red"
+		zone: "red",
+		district: "Pune"
 	},
 	{
 		name: "Lucknow",
-		zone: "red"
+		zone: "red",
+		district: "Lucknow",
 	},
 	{
 		name: "Chennai",
-		zone: "red"
+		zone: "red",
+		district: "Chennai",
 	},
 ];
 

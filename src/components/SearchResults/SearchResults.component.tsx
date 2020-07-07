@@ -1,9 +1,11 @@
 import React from "react";
 import { List } from "antd";
+import './SearchResults.styles.css';
 
 type Props = {
   data: Array<object>;
-  query?: string;
+	query?: string;
+	handleClick: Function;
 };
 
 const getHighlightedText = (text: string, highlight: string) => {
@@ -37,7 +39,7 @@ const SearchResults = (props: Props) => {
       bordered
       dataSource={props.data}
       renderItem={(item: any) => (
-        <List.Item>
+        <List.Item onClick={() => props.handleClick(item)} className="search-item">
           {getHighlightedText(item.district, props.query || "")}
         </List.Item>
       )}

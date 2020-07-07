@@ -1,18 +1,21 @@
 import React from "react";
-import { Row, Col, Typography, Input, Divider } from "antd";
+import { Row, Col, Typography, Input } from "antd";
 import { SearchOutlined, CloseOutlined } from "@ant-design/icons";
 import "./App.css";
 import StatusDot from "./components/StatusDot/StatusDot.component";
-import PopularCities from "./assets/data/popular-cities";
 import SearchResults from "./components/SearchResults/SearchResults.component";
+import Details from "./components/Details/Details.component";
+import PopularCitiesList from "./components/PopularCitiesList/PopularCitiesList.component";
 
 const { Title } = Typography;
 
 type IProps = {};
 type IState = {
   query: string;
-	data: Array<object>;
-	filteredData: Array<object>;
+  data: Array<object>;
+  filteredData: Array<object>;
+  showSearcResults: boolean;
+  selectedItem: object | null;
 };
 
 export default class App extends React.Component<IProps, IState> {
@@ -20,8 +23,10 @@ export default class App extends React.Component<IProps, IState> {
     super(props);
     this.state = {
       query: "",
-			data: [],
-			filteredData: [],
+      data: [],
+      filteredData: [],
+      showSearcResults: false,
+      selectedItem: null,
     };
   }
 
@@ -29,25 +34,27 @@ export default class App extends React.Component<IProps, IState> {
     fetch("https://api.covid19india.org/zones.json")
       .then((res) => res.json())
       .then((result) => {
-        console.log(result.zones);
         this.setState({ data: result.zones });
       })
       .catch((error) => console.error(error));
   }
 
   handleChange(event: any) {
-		this.setState({ query: event.target.value });
-		const regex = new RegExp(`(${event.target.value})`, 'i');
-		const filtered = this.state.data.filter((item: any) => regex.test(item.district));
-		console.log(filtered);
-		if (filtered.length > 10) {
-			filtered.splice(10);
-		}
-		this.setState({ filteredData: filtered });
+    const value = event.target.value;
+    this.setState({ query: value, showSearcResults: true });
+    const regex = new RegExp(`(${value})`, "i");
+    const filtered = this.state.data.filter((item: any) =>
+      regex.test(item.district)
+    );
+    console.log(filtered);
+    if (filtered.length > 10) {
+      filtered.splice(10);
+    }
+    this.setState({ filteredData: filtered });
   }
 
   handleClear() {
-    this.setState({ query: "" });
+    this.setState({ query: "", showSearcResults: false, selectedItem: null });
   }
 
   render() {
@@ -90,30 +97,37 @@ export default class App extends React.Component<IProps, IState> {
                   }
                 />
               </div>
-              {!!this.state.query && (
+              {!!this.state.query && this.state.showSearcResults && (
                 <div className="results-container">
                   <SearchResults
                     data={this.state.filteredData}
                     query={this.state.query}
+                    handleClick={(item: any) => {
+                      console.log(item);
+                      this.setState({
+                        showSearcResults: false,
+                        query: item.district,
+                        selectedItem: item,
+                      });
+                    }}
                   />
                 </div>
               )}
             </Col>
           </Row>
-          <Row className="popular-container">
-            <Col md={12} sm={24}>
-              <h6 className="popular-title">POPULAR CITIES</h6>
-              <Divider
-                style={{ border: "1px solid rgba(255, 255, 255, 0.12)" }}
+          <Row>
+            {this.state.selectedItem ? (
+              <Details data={this.state.selectedItem} />
+            ) : (
+              <PopularCitiesList
+                handleClick={(district: string) => {
+                  const filtered = this.state.data.filter(
+                    (item: any) => item.district === district
+                  );
+                  this.setState({ query: district, selectedItem: filtered[0] });
+                }}
               />
-              <Row>
-                {PopularCities.map((item) => (
-                  <Col md={6} sm={12} key={item.name}>
-                    <StatusDot color={item.zone} text={item.name} />
-                  </Col>
-                ))}
-              </Row>
-            </Col>
+            )}
           </Row>
           <Row>
             <Col lg={6} md={12} sm={24} className="zone-info-container">
