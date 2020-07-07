@@ -130,7 +130,7 @@ export default class App extends React.Component<IProps, IState> {
             )}
           </Row>
           <Row>
-            <Col lg={6} md={12} sm={24} className="zone-info-container">
+            <Col lg={8} md={12} sm={24} className="zone-info-container">
               <Row>
                 <StatusDot
                   color="red"
